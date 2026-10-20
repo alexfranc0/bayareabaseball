@@ -21,7 +21,7 @@ def plot_win_pct_by_site(t, title="Win % by site"):
 
     fig, ax = plt.subplots(figsize=(5, 4))
     bars = ax.bar(t.index, p, yerr=1.96 * se, capsize=6,
-                  color=["#27251F", "#FD5A1E"])
+                  color=["#002B0B", "#FFD54B"])
     ax.axhline(0.5, color="gray", linestyle="--", linewidth=1)
     ax.set_ylim(0, 1)
     ax.set_ylabel("Win percentage")
