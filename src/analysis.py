@@ -15,19 +15,19 @@ def win_pct_by_site(games):
 
 import matplotlib.pyplot as plt
 
-def plot_win_pct_by_site(t, title="Win % by site"):
-    p = t["win_pct"]
-    se = (p * (1 - p) / t["games"]) ** 0.5   # standard error of a proportion
+def plot_win_pct_by_site(g, title="Win % by site"):
+    p = g["win_pct"]
+    se = (p * (1 - p) / g["games"]) ** 0.5   # standard error of a proportion
 
     fig, ax = plt.subplots(figsize=(5, 4))
-    bars = ax.bar(t.index, p, yerr=1.96 * se, capsize=6,
+    bars = ax.bar(g.index, p, yerr=1.96 * se, capsize=6,
                   color=["#002B0B", "#FFD54B"])
     ax.axhline(0.5, color="gray", linestyle="--", linewidth=1)
     ax.set_ylim(0, 1)
     ax.set_ylabel("Win percentage")
     ax.set_title(title)
 
-    for bar, w, g in zip(bars, t["wins"], t["games"]):
+    for bar, w, g in zip(bars, g["wins"], g["games"]):
         ax.text(bar.get_x() + bar.get_width() / 2, 0.05,
                 f"{int(w)}-{int(g - w)}", ha="center",
                 color="white", fontweight="bold")
